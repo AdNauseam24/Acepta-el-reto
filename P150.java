@@ -1,5 +1,5 @@
 package buclesAnidados;
-
+//accepted
 import java.util.Scanner;
 
 public class P150 {
