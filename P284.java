@@ -1,56 +1,47 @@
-package condicionales;
-
+package buclesSimples;
 import java.util.Scanner;
 
-public class TiendaEsquina {
+//accepted
+
+
+public class P284 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int devolucion;
-        int eur2=0, eur1=0, cent50=0, cent20=0, cent10=0, cent5=0, cent2=0, cent1=0;
-        System.out.println("Introduzca el número de casos a analizar: ");
-        int casos = sc.nextInt();
-        for (int i = 0 ; i < casos; i++){
-            System.out.println("Introduzca el precio de la compra en céntimos: ");
-            int precio= sc.nextInt();
-            System.out.println("Introduzca el dinero entregado por el cliente en céntimos: ");
-            int pago = sc.nextInt();
-            devolucion = pago-precio;
-            if (devolucion>=0) {
-                while (devolucion >= 200) {
-                    devolucion -= 200;
-                    eur2++;
-                }
-                while (devolucion >= 100) {
-                    devolucion -= 100;
-                    eur1++;
-                }
-                while (devolucion >= 50) {
-                    devolucion -= 50;
-                    cent50++;
-                }
-                while (devolucion >= 20) {
-                    devolucion -= 20;
-                    cent20++;
-                }
-                while (devolucion >= 10) {
-                    devolucion -= 10;
-                    cent10++;
-                }
-                while (devolucion >= 5) {
-                    devolucion -= 5;
-                    cent5++;
-                }
-                while (devolucion >= 2) {
-                    devolucion -= 2;
-                    cent2++;
-                }
-                while (devolucion >= 1) {
-                    devolucion -= 1;
-                    cent1++;
-                }
+        int n = sc.nextInt();
+        for (int i = 0; i < n; i++) {
+            int coste = sc. nextInt();
+            int entrega = sc.nextInt();
+            int eur2=0, eur1=0, cent50=0, cent20=0, cent10=0, cent5=0, cent2=0, cent1=0;
+            int devolucion = entrega-coste;
+            if (devolucion<0){
+                System.out.println("DEBE " + Math.abs(devolucion));
+            } else {
+                    if(devolucion>=200){
+                        eur2=eur2+devolucion/200;
+                        devolucion=devolucion%200;
+                    }  if (devolucion>=100) {
+                        eur1=eur1+devolucion/100;
+                        devolucion=devolucion%100;
+                    }  if (devolucion>=50) {
+                        cent50=cent50+devolucion/50;
+                        devolucion=devolucion%50;
+                    }  if (devolucion>=20){
+                        cent20=cent20+devolucion/20;
+                        devolucion=devolucion%20;
+                    }  if (devolucion>=10) {
+                        cent10=cent10+devolucion/10;
+                        devolucion=devolucion%10;
+                    }  if (devolucion>=5) {
+                        cent5=cent5+devolucion/5;
+                        devolucion=devolucion%5;
+                    }  if (devolucion>=2) {
+                        cent2=cent2+devolucion/2;
+                        devolucion=devolucion%2;
+                    }  if (devolucion>0){
+                        cent1=cent1+devolucion;
+                        devolucion= 0;
+                    }
                 System.out.println(eur2+ " " + eur1 + " " + cent50+ " " + cent20 + " " + cent10+ " " + cent5 + " " + cent2+ " " + cent1);
-            }else {
-                System.out.println("Debe: " + Math.abs(devolucion));
             }
 
         }
