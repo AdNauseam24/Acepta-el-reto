@@ -1,53 +1,52 @@
 package condicionales;
-
 import java.util.Scanner;
 
-public class Velocidad_desp_tiemp {
+
+//accepted
+
+
+public class P439 {
     public static void main(String[] args) {
-        Scanner scN = new Scanner(System.in);
-        Scanner scL = new Scanner(System.in);
-        System.out.println("Introduzca el número de problemas a resolver");
-        int n = scN.nextInt();
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
         for (int i = 0; i < n; i++) {
-            System.out.println("Introduzca los datos: ");
-            String datos = scL.nextLine();
-            String[] parametros = datos.split(" ");
-            String [] datos1 = parametros[0].split("=");
-            char parametro1 = datos1[0].charAt(0);
-            int valor1 = Integer.parseInt(datos1[1]);
-            String [] datos2 = parametros[1].split("=");
-            char parametro2 = datos2[0].charAt(0);
-            int valor2 = Integer.parseInt(datos2[1]);
-            switch (parametro1) {
+            int distancia=0;
+            int tiempo=0;
+            int velocidad=0;
+            String dato1 = sc.next();
+            switch (dato1.charAt(0)){
                 case 'D':
-                    switch (parametro2){
-                        case 'T':
-                            System.out.println(valor1/valor2);
-                            break;
-                        case 'V':
-                            System.out.println(valor1/valor2);
-                            break;
-                    }
+                    distancia=Integer.parseInt(dato1.substring(2));
                     break;
                 case 'T':
-                    switch (parametro2){
-                        case 'V':
-                            System.out.println(valor2*valor1);
-                            break;
-                        case 'D':
-                            System.out.println(valor2/valor1);
-                            break;
-                    }
+                    tiempo=Integer.parseInt(dato1.substring(2));
                     break;
                 case 'V':
-                    switch (parametro2){
-                        case 'T':
-                            System.out.println(valor2*valor1);
-                        case 'D':
-                            System.out.println(valor2/valor1);
-                    }
+                    velocidad=Integer.parseInt(dato1.substring(2));
+            }
+            String dato2 = sc.next();
+            switch (dato2.charAt(0)){
+                case 'D':
+                    distancia=Integer.parseInt(dato2.substring(2));
+                    break;
+                case 'T':
+                    tiempo=Integer.parseInt(dato2.substring(2));
+                    break;
+                case 'V':
+                    velocidad=Integer.parseInt(dato2.substring(2));
                     break;
             }
+            if (distancia==0){
+                distancia=velocidad*tiempo;
+                System.out.println("D=" + distancia);
+            } else if (tiempo==0) {
+                tiempo=distancia/velocidad;
+                System.out.println("T=" + tiempo);
+            } else if (velocidad==0) {
+                velocidad=distancia/tiempo;
+                System.out.println("V=" + velocidad);
+            }
+
         }
     }
 }
