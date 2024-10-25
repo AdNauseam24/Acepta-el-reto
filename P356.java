@@ -1,53 +1,24 @@
 package buclesSimples;
-
 import java.util.Scanner;
 
-public class DolarZimbabuense {
+
+//accepted
+
+
+
+public class P356 {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int a = 0;
-        int b = 0;
-        int c = 0;
-        System.out.println("Introduzca el número de casos de prueba: ");
+        Scanner sc = new Scanner (System.in);
         int n = sc.nextInt();
-        for (int i = 0; i<n; i++){
-            System.out.println();
-            System.out.println("Introduzca el primer precio");
-            a = sc.nextInt();
-            System.out.println("Introduzca el segundo precio");
-            b = sc.nextInt();
-            System.out.println("Introduzca el tercer precio");
-            c = sc.nextInt();
-            if (a>b && a>c){
-                System.out.print(a + " ");
-                if (b>c){
-                    System.out.print(b + " ");
-                    System.out.print(c + " ");
-                } else {
-                    System.out.print(c + " ");
-                    System.out.print(b + " ");
-                }
-            } else if (b>c) {
-                System.out.print(b + " ");
-                if (c>a){
-                    System.out.print(c + " ");
-                    System.out.print(a + " ");
-                } else {
-                    System.out.print(a + " ");
-                    System.out.print(c + " ");
-                }
-            } else{
-                System.out.print(c + " ");
-                if (b>a){
-                    System.out.print(b + " ");
-                    System.out.print(a + " ");
-                } else {
-                    System.out.print(a + " ");
-                    System.out.print(b + " ");
-                }
-            }
-
-
+        for (int i = 0; i < n; i++) {
+            long precio1 = sc.nextLong();
+            long precio2 = sc.nextLong();
+            long precio3 = sc.nextLong();
+           long mayor,menor, medio;
+           mayor=Math.max(precio1,Math.max(precio2,precio3));
+           menor=Math.min(precio1,Math.min(precio2,precio3));
+           medio=precio1+precio2+precio3-mayor-menor;
+            System.out.println(menor + " " + medio + " " + mayor);
         }
     }
 }
