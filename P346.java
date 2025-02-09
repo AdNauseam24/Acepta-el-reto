@@ -1,11 +1,24 @@
 package p300_399;
 import java.util.Scanner;
+import java.util.Stack;
 
 
-//TLE
+//Accepted
 
 
 public class P346 {
+
+    public static int rangoMax(Stack<Integer> st, int A) {
+        int rMax = 0;
+        for (int i = st.size() - 1; i >= 0; i--) {
+            while (Math.abs(st.get(i)-st.peek()) >= A) {
+                st.pop();
+            }
+            if (st.size()-i>rMax) rMax = st.size()-i;
+        }
+        return rMax;
+    }
+
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
@@ -16,46 +29,14 @@ public class P346 {
         while (N != 0){
             int A = sc.nextInt();
 
-            int [] arr = new int[N];
+            Stack<Integer> stack = new Stack<>();
 
             for (int i = 0; i < N; i++) {
-                arr[i]= sc.nextInt();
+                stack.push(sc.nextInt());
             }
 
-            int indiceInicial=0;
-            int maxNacimientos = 0;
+            System.out.println(rangoMax(stack, A));
 
-            while (indiceInicial < N){
-
-                int anioInicial = arr[indiceInicial];
-                int anioMax = anioInicial+A-1;
-                int indiceActual = indiceInicial;
-                int maxActual = 0;
-                boolean flag = true;
-
-                while (arr[indiceActual] <= anioMax){
-
-                    if (flag && arr[indiceActual] != anioInicial){
-
-                        anioInicial = arr[indiceActual];
-                        indiceInicial = indiceActual;
-                        flag=false;
-
-                    }
-
-                    maxActual++;
-                    indiceActual++;
-
-                    if (indiceActual>= N){
-                        indiceInicial = N;
-                        break;
-                    }
-                }
-
-                maxNacimientos = maxNacimientos>maxActual?maxNacimientos:maxActual;
-            }
-
-            System.out.println(maxNacimientos);
              N = sc.nextInt();
 
         }
